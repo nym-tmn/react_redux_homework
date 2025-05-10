@@ -1,20 +1,31 @@
 import { Route, Routes } from "react-router"
+import styled from "styled-components"
 import { EmptyLayout, MainLayout } from "@layouts"
 import { CharactersPage, EpisodesPage, HomePage, LocationsPage } from "@pages"
+import { Flex } from "@components"
+
+const AppContainer = styled.div`
+max-width: 1280px;
+width: 100%;
+margin: 0 auto;
+background-color: white;
+`
 
 const App = () => {
 	return (
-		<>
-			<Routes>
-				<Route path="/" element={<MainLayout />}>
-					<Route index element={<HomePage />} />
-					<Route path="/characters" element={<CharactersPage />} />
-					<Route path="/locations" element={<LocationsPage />} />
-					<Route path="/episodes" element={<EpisodesPage />} />
-				</Route>
-				<Route path="*" element={<EmptyLayout/>}></Route>
+		<AppContainer>
+			<Flex $minHeight="100vh" $direction="column">
+				<Routes>
+					<Route path="/" element={<MainLayout />}>
+						<Route index element={<HomePage />} />
+						<Route path="/characters" element={<CharactersPage />} />
+						<Route path="/locations" element={<LocationsPage />} />
+						<Route path="/episodes" element={<EpisodesPage />} />
+					</Route>
+					<Route path="*" element={<EmptyLayout/>}></Route>
 			</Routes>
-		</>
+			</Flex>
+		</AppContainer>
 	)
 }
 
