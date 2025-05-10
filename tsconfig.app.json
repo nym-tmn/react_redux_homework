@@ -30,6 +30,10 @@
 			"@components/*": ["./components/*"],
 			"@assets": ["./assets"],
 			"@assets/*": ["./assets/*"],
+			"@layouts": ["./layouts"],
+			"@layouts/*": ["./layouts/*"],
+			"@pages": ["./pages"],
+			"@pages/*": ["./pages/*"],
 		}
 	},
 	"include": [
