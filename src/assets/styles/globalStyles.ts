@@ -123,5 +123,6 @@ a:hover {
 /* General styles */
 body {
 	font-family: 'Inter', sans-serif;
+	background-color: #d1d1d1;
 }
-`
+`;
