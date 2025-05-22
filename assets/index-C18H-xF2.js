@@ -367,4 +367,4 @@ body {
 	font-family: 'Inter', sans-serif;
 	background-color: #d1d1d1;
 }
-`,UE=({children:a})=>{const[i,c]=D.useState(!1),r=()=>{c(o=>!o)};return S.jsx(Sy.Provider,{value:{darkTheme:i,toggleTheme:r},children:a})};wv.createRoot(document.getElementById("root")).render(S.jsx(S.Fragment,{children:S.jsxs($1,{children:[S.jsx(NE,{}),S.jsx(UE,{children:S.jsx(jE,{})})]})}));
+`,UE=({children:a})=>{const[i,c]=D.useState(!1),r=()=>{c(o=>!o)};return S.jsx(Sy.Provider,{value:{darkTheme:i,toggleTheme:r},children:a})};wv.createRoot(document.getElementById("root")).render(S.jsx(S.Fragment,{children:S.jsxs($1,{basename:"/react_homework",children:[S.jsx(NE,{}),S.jsx(UE,{children:S.jsx(jE,{})})]})}));
