@@ -243,23 +243,6 @@ margin-bottom: 30px;
 	margin: 0 auto;
 	background-color: ${()=>{const{darkTheme:a}=xy();return a?"gray":"white"}};
 `,jE=()=>S.jsx(ME,{}),NE=eS`
-/* Fonts */
-/* @font-face {
-	font-family: 'Inter';
-	src: url('./src/assets/fonts/Inter-Regular.woff2') format('woff2'),
-			url('./src/assets/fonts/Inter-Regular.woff') format('woff');
-	font-weight: 400;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'Inter';
-	src: url('./src/assets/fonts/Inter-SemiBold.woff2') format('woff2'),
-		url('./src/assets/fonts/Inter-SemiBold.woff') format('woff');
-	font-weight: 600;
-	font-style: normal;
-} */
-
 /* Reset styles */
 *,
 *:before,
