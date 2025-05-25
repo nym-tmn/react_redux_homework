@@ -2,23 +2,6 @@ import { createGlobalStyle } from "styled-components";
 import '@assets/styles/fonst.css';
 
 export const GlobalStyles = createGlobalStyle`
-/* Fonts */
-/* @font-face {
-	font-family: 'Inter';
-	src: url('./src/assets/fonts/Inter-Regular.woff2') format('woff2'),
-			url('./src/assets/fonts/Inter-Regular.woff') format('woff');
-	font-weight: 400;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'Inter';
-	src: url('./src/assets/fonts/Inter-SemiBold.woff2') format('woff2'),
-		url('./src/assets/fonts/Inter-SemiBold.woff') format('woff');
-	font-weight: 600;
-	font-style: normal;
-} */
-
 /* Reset styles */
 *,
 *:before,
