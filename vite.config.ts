@@ -18,6 +18,7 @@ export default defineConfig({
 			'@hooks': path.resolve('src/hooks'),
 			'@providers': path.resolve('src/providers'),
 			'@context': path.resolve('src/context'),
+			'@store': path.resolve('src/store'),
 		}
 	}
 })

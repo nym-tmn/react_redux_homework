@@ -1,3 +1,4 @@
+// export type { initialStateType } from './redux/characterReducers';
 export type { ResponseType } from './api/common';
 export type {	CharactersType,	CharacterType} from './api/characters';
 export type { LocationsType, LocationType } from './api/locations';
