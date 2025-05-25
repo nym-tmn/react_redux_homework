@@ -5,7 +5,7 @@ import path from 'path'
 // https://vite.dev/config/
 export default defineConfig({
 	plugins: [react()],
-	base: '/react_homework',
+	base: '/react_redux_homework',
 	resolve: {
 		alias: {
 			'@': path.resolve('src'),

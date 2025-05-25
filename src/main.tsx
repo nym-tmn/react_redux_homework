@@ -6,7 +6,7 @@ import { ThemeProvider } from '@providers'
 
 createRoot(document.getElementById('root')!).render(
 	<>
-		<BrowserRouter basename="/react_homework">
+		<BrowserRouter basename="/react_redux_homework">
 			<GlobalStyles />
 			<ThemeProvider>
 				<App />
