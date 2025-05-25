@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useMemo, useState, type ChangeEvent } from "react"
 import axios from "axios";
-import { styled } from "styled-components";
 import { getCharacters, getFiltredCharacters } from "@api"
 import { Button, ContentTitle, CustomImage, CustomnInput, Flex, Modal, Pagination, SectionStyles } from "@components"
 import { Character } from "./Character/Character";
@@ -9,11 +8,12 @@ import failedImage from '@assets/images/failedImage.webp';
 import loadingImage from '@assets/images/loading.webp';
 import { useDebounce } from "@hooks";
 
-const CharactersPageContainer = ({ className }: { className?: string }) => {
+export const CharactersPage = () => {
 
 	const [characters, setCharacters] = useState<CharactersType | null>(null);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [pages, setPages] = useState(0);
+	const [portionCount, setPortionCount] = useState(1);
 	const [isOpenModal, setIsOpenModal] = useState(false);
 	const [selectedCharacter, setSelectedCharacter] = useState<CharacterType | null>(null);
 	const [searchInputValue, setsearchInputValue] = useState('');
@@ -98,12 +98,6 @@ const CharactersPageContainer = ({ className }: { className?: string }) => {
 					/>
 				</Flex>
 			</CustomnInput>
-			<Flex
-				className={className}
-				$direction="column"
-				$justify="space-between"
-				$align="center"
-			>
 
 				{isLoading ? (
 					<SectionStyles $display="flex">
@@ -130,9 +124,9 @@ const CharactersPageContainer = ({ className }: { className?: string }) => {
 								{charactersList}
 							</Flex>
 						</SectionStyles>
+						<Pagination pages={pages} currentPage={currentPage} setCurrentPage={setCurrentPage} portionCount={portionCount} setPortionCount={setPortionCount}/>
 					</>
 				)}
-				<Pagination pages={pages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
 				{selectedCharacter && (
 					<Modal
 						character={selectedCharacter}
@@ -140,11 +134,6 @@ const CharactersPageContainer = ({ className }: { className?: string }) => {
 						onClick={() => handleSetCharacterClick(null)}
 					/>
 				)}
-			</Flex>
 		</>
 	);
 };
-
-export const CharactersPage = styled(CharactersPageContainer)`
-  flex: 1 1 auto;
-`;

@@ -49,6 +49,8 @@ export interface PaginationProps {
 	pages: number;
 	currentPage: number;
 	setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+	portionCount: number;
+	setPortionCount: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export type CharacterProps = {

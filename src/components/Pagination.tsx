@@ -1,11 +1,17 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo/* , useState */ } from "react";
 import { Button, Flex } from "@components"
 import type { PaginationProps } from "@types";
 import React from "react";
 
-export const Pagination: React.FC<PaginationProps> = React.memo(({ pages, currentPage, setCurrentPage }) => {
+export const Pagination: React.FC<PaginationProps> = React.memo(({
+	pages,
+	currentPage,
+	setCurrentPage,
+	portionCount,
+	setPortionCount
+}) => {
 
-	const [portionCount, setPortionCount] = useState(1);
+	// const [portionCount, setPortionCount] = useState(1);
 
 	const { pagesCount, totalPortion, prevPagesPortion, nextPagesPortion } = useMemo(() => {
 		const pagesCount: number[] = [];
@@ -27,7 +33,7 @@ export const Pagination: React.FC<PaginationProps> = React.memo(({ pages, curren
 		if (currentPage === 1) {
 			setPortionCount(1);
 		}
-	}, [currentPage])
+	}, [currentPage, setPortionCount])
 
 	return (
 		<Flex as={'nav'} $margin="0 0 18px 0" $gap="5px">

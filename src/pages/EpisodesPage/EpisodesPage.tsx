@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
-import { styled } from "styled-components";
 import { getEpisodes } from "@api";
 import { ContentTitle, CustomImage, Flex, Pagination, SectionStyles } from "@components";
 import type { EpisodesType } from "@types";
@@ -8,11 +7,12 @@ import { Episode } from "./Episode/Episode";
 import failedImage from '@assets/images/failedImage.webp';
 import loadingImage from '@assets/images/loading.webp';
 
-const EpisodesPageContainer = ({ className }: { className?: string }) => {
+export const EpisodesPage = () => {
 
 	const [episodes, setEpisodes] = useState<EpisodesType | null>(null);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [pages, setPages] = useState(0);
+	const [portionCount, setPortionCount] = useState(1);
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 
@@ -48,12 +48,7 @@ const EpisodesPageContainer = ({ className }: { className?: string }) => {
 			<ContentTitle $fontSize="28px" $marginBottom="20px" $maxWidth="200px">
 				Episodes
 			</ContentTitle>
-			<Flex
-				className={className}
-				$direction="column"
-				$justify="center"
-				$align="center"
-			>
+
 				{isLoading ? (
 					<SectionStyles $display="flex">
 						<Flex $direction="column" $justify="center" $align="center">
@@ -81,14 +76,9 @@ const EpisodesPageContainer = ({ className }: { className?: string }) => {
 										<Episode key={episode.id} name={episode.name} episode={episode.episode} air_date={episode.air_date} />)}
 							</Flex>
 						</SectionStyles>
+						<Pagination pages={pages} currentPage={currentPage} setCurrentPage={setCurrentPage} portionCount={portionCount} setPortionCount={setPortionCount} />
 					</>
 				)}
-				<Pagination pages={pages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
-			</Flex>
 		</>
 	);
 };
-
-export const EpisodesPage = styled(EpisodesPageContainer)`
-  flex: 1 1 auto;
-`;

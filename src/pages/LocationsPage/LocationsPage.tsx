@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
-import { styled } from "styled-components";
 import { getLocations } from "@api";
 import type { LocationsType } from "@types";
 import { LocationItem } from "./Location/LocationItem";
@@ -8,11 +7,12 @@ import { ContentTitle, CustomImage, Flex, Pagination, SectionStyles } from "@com
 import failedImage from '@assets/images/failedImage.webp';
 import loadingImage from '@assets/images/loading.webp';
 
-const LocationsPageContainer = ({ className }: { className?: string }) => {
+export const LocationsPage = () => {
 
 	const [locations, setLocations] = useState<LocationsType | null>(null);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [pages, setPages] = useState(0);
+	const [portionCount, setPortionCount] = useState(1);
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 
@@ -48,12 +48,7 @@ const LocationsPageContainer = ({ className }: { className?: string }) => {
 			<ContentTitle $fontSize="28px" $marginBottom="20px" $maxWidth="200px">
 				Locations
 			</ContentTitle>
-			<Flex
-				className={className}
-				$direction="column"
-				$justify="center"
-				$align="center"
-			>
+
 				{isLoading ? (
 					<SectionStyles $display="flex">
 						<Flex $direction="column" $justify="center" $align="center">
@@ -81,14 +76,9 @@ const LocationsPageContainer = ({ className }: { className?: string }) => {
 										<LocationItem key={location.id} name={location.name} dimension={location.dimension} type={location.type} />)}
 							</Flex>
 						</SectionStyles>
+						<Pagination pages={pages} currentPage={currentPage} setCurrentPage={setCurrentPage} portionCount={portionCount} setPortionCount={setPortionCount} />
 					</>
 				)}
-				<Pagination pages={pages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
-			</Flex>
 		</>
 	);
 };
-
-export const LocationsPage = styled(LocationsPageContainer)`
-	flex: 1 1 auto;
-`;
