@@ -4,7 +4,7 @@ import { getLocations } from "@api";
 import type { LocationsType } from "@types";
 import { LocationItem } from "./Location/LocationItem";
 import { ContentTitle, CustomImage, Flex, Pagination, SectionStyles } from "@components";
-import failedImage from '@assets/images/failedImage.webp';
+import failedImage from '@assets/images/failed_Image.webp';
 import loadingImage from '@assets/images/loading.webp';
 
 export const LocationsPage = () => {

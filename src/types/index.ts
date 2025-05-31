@@ -1,8 +1,10 @@
-// export type { initialStateType } from './redux/characterReducers';
-export type { ResponseType } from './api/common';
+export type { ResponseType, ResponseInfoType } from './api/common';
 export type {	CharactersType,	CharacterType} from './api/characters';
 export type { LocationsType, LocationType } from './api/locations';
 export type { EpisodesType, EpisodeType } from './api/episodes';
+export type { CharacterState, CharactersActions } from './store/characterReducerTypes';
+export { CharactersActionTypes } from './store/characterReducerTypes'
+
 export type {
 	ButtonProps,
 	ContentTitleProps,

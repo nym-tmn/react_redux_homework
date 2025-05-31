@@ -1,3 +1,4 @@
+import type { AppDispatch } from "@store";
 import type { CharacterType } from "@types";
 
 export interface ButtonProps {
@@ -47,10 +48,9 @@ export interface CustomImageProps {
 
 export interface PaginationProps {
 	pages: number;
+	dispatch: AppDispatch;
 	currentPage: number;
-	setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 	portionCount: number;
-	setPortionCount: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export type CharacterProps = {

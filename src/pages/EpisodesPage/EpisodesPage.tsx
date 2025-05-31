@@ -4,7 +4,7 @@ import { getEpisodes } from "@api";
 import { ContentTitle, CustomImage, Flex, Pagination, SectionStyles } from "@components";
 import type { EpisodesType } from "@types";
 import { Episode } from "./Episode/Episode";
-import failedImage from '@assets/images/failedImage.webp';
+import failedImage from '@assets/images/failed_Image.webp';
 import loadingImage from '@assets/images/loading.webp';
 
 export const EpisodesPage = () => {

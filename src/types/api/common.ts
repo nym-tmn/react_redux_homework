@@ -11,8 +11,5 @@ export interface ResourceBase {
 }
 
 export interface ResponseInfoType {
-	count: number;
 	pages: number;
-	prev: string | null;
-	next: string | null;
 }
