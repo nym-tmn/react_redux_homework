@@ -1,8 +1,7 @@
+import axios from "axios";
 import { getEpisodes } from "@api";
 import { setError, setIsLoading, setPages, setResourse, type AppThunk } from "@store";
 import { EpisodesActionTypes } from "@types";
-// import { LocationsActionTypes, type LocationsType } from "@types";
-import axios from "axios";
 
 // Async
 
@@ -38,19 +37,3 @@ export const fetchEpisodes = (currentPage: number): AppThunk => async (dispatch)
 		}
 	}
 }
-
-// Sync
-
-// const setIsLoading = () => ({
-// 	type: LocationsActionTypes.FETCH_LOCATIONS,
-// })
-
-// const setLocations = (locations: LocationsType) => ({
-// 	type: LocationsActionTypes.FETCH_LOCATIONS_SUCCESS,
-// 	payload: locations,
-// })
-
-// const setError = (errorMessage: string) => ({
-// 	type: LocationsActionTypes.FETCH_LOCATIONS_ERROR,
-// 	payload: errorMessage,
-// })
