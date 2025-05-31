@@ -1,4 +1,5 @@
 export { charactersReducer } from "./reducers/characterReducer";
+export { locationsReducer } from "./reducers/locationsReducer";
 export { rootReducer } from "./reducers/rootReducer";
 
 export {
@@ -16,3 +17,7 @@ export {
 	setCurrentPage,
 	setSearchInputValue
 } from './actions/characters';
+
+export {
+	fetchLocatoins
+} from './actions/locations';

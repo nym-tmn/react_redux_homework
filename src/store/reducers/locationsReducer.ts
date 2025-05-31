@@ -1,10 +1,10 @@
 import {
-	CharactersActionTypes,
-	type CharactersActions,
-	type CharactersState
+	LocationsActionTypes,
+	type LocationsActions,
+	type LocationsState,
 } from "@types";
 
-const initialState: CharactersState = {
+const initialState: LocationsState = {
 	isLoading: false,
 	info: {
 		pages: 0,
@@ -12,20 +12,19 @@ const initialState: CharactersState = {
 	results: [],
 	currentPage: 1,
 	portionCount: 1,
-	searchInputValue: '',
 	error: '',
 };
 
-export const charactersReducer = (state = initialState, action: CharactersActions) => {
+export const locationsReducer = (state = initialState, action: LocationsActions) => {
 	switch (action.type) {
-		case CharactersActionTypes.FETCH_CHARACTERS:
+		case LocationsActionTypes.FETCH_LOCATIONS:
 			return {
 				...state,
 				isLoading: true,
 				results: [],
 				error: '',
 			};
-		case CharactersActionTypes.FETCH_CHARACTERS_SUCCESS:
+		case LocationsActionTypes.FETCH_LOCATIONS_SUCCESS:
 			return {
 				...state,
 				isLoading: false,
@@ -34,22 +33,17 @@ export const charactersReducer = (state = initialState, action: CharactersAction
 					pages: action.payload.info.pages
 				},
 			};
-		case CharactersActionTypes.CHARACTERS_SET_CURRENT_PAGE:
+		case LocationsActionTypes.LOCATIONS_SET_CURRENT_PAGE:
 			return {
 				...state,
 				currentPage: action.payload,
 			};
-		case CharactersActionTypes.CHARACTERS_SET_PORTION_COUNT:
+		case LocationsActionTypes.LOCATIONS_SET_PORTION_COUNT:
 			return {
 				...state,
 				portionCount: action.payload,
 			};
-		case CharactersActionTypes.CHARACTERS_SET_SEARCH_INPUT_VALUE:
-			return {
-				...state,
-				searchInputValue: action.payload,
-			};
-		case CharactersActionTypes.FETCH_CHARACTERS_ERROR:
+		case LocationsActionTypes.FETCH_LOCATIONS_ERROR:
 			return {
 				...state,
 				isLoading: false,

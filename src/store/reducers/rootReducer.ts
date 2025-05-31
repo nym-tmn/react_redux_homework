@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
-import { charactersReducer } from "@store";
+import { charactersReducer, locationsReducer } from "@store";
 
 export const rootReducer = combineReducers({
 	characters: charactersReducer,
+	locations: locationsReducer,
 });

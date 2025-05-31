@@ -1,6 +1,6 @@
 import type { CharactersType, ResponseInfoType } from "@types";
 
-export interface CharacterState {
+export interface CharactersState {
 	isLoading: boolean;
 	info: ResponseInfoType;
 	results: CharactersType;
