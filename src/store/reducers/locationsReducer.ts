@@ -6,12 +6,7 @@ import {
 
 const initialState: LocationsState = {
 	isLoading: false,
-	info: {
-		pages: 0,
-	},
 	results: [],
-	currentPage: 1,
-	portionCount: 1,
 	error: '',
 };
 
@@ -28,20 +23,7 @@ export const locationsReducer = (state = initialState, action: LocationsActions)
 			return {
 				...state,
 				isLoading: false,
-				results: action.payload.results,
-				info: {
-					pages: action.payload.info.pages
-				},
-			};
-		case LocationsActionTypes.LOCATIONS_SET_CURRENT_PAGE:
-			return {
-				...state,
-				currentPage: action.payload,
-			};
-		case LocationsActionTypes.LOCATIONS_SET_PORTION_COUNT:
-			return {
-				...state,
-				portionCount: action.payload,
+				results: action.payload,
 			};
 		case LocationsActionTypes.FETCH_LOCATIONS_ERROR:
 			return {

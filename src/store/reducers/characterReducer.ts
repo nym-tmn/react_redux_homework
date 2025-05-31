@@ -6,12 +6,7 @@ import {
 
 const initialState: CharactersState = {
 	isLoading: false,
-	info: {
-		pages: 0,
-	},
 	results: [],
-	currentPage: 1,
-	portionCount: 1,
 	searchInputValue: '',
 	error: '',
 };
@@ -29,20 +24,7 @@ export const charactersReducer = (state = initialState, action: CharactersAction
 			return {
 				...state,
 				isLoading: false,
-				results: action.payload.results,
-				info: {
-					pages: action.payload.info.pages
-				},
-			};
-		case CharactersActionTypes.CHARACTERS_SET_CURRENT_PAGE:
-			return {
-				...state,
-				currentPage: action.payload,
-			};
-		case CharactersActionTypes.CHARACTERS_SET_PORTION_COUNT:
-			return {
-				...state,
-				portionCount: action.payload,
+				results: action.payload,
 			};
 		case CharactersActionTypes.CHARACTERS_SET_SEARCH_INPUT_VALUE:
 			return {

@@ -15,6 +15,12 @@ export {
 	type LocationsActions
 } from './store/locationsReducerTypes';
 
+export {
+	PaginationActionTypes,
+	type PaginationState,
+	type PaginationActions
+} from './store/paginationReducerTypes';
+
 export type {
 	ButtonProps,
 	ContentTitleProps,

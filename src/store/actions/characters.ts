@@ -1,6 +1,6 @@
 import { getCharacters, getFiltredCharacters } from "@api";
-import type { AppThunk } from "@store";
-import { CharactersActionTypes, type CharactersType, type ResponseType } from "@types";
+import { setPages, type AppThunk } from "@store";
+import { CharactersActionTypes, type CharactersType } from "@types";
 import axios from "axios";
 
 // Async
@@ -9,7 +9,8 @@ export const fetchCharacters = (currentPage: number): AppThunk => async (dispatc
 	try {
 		dispatch(setIsLoading())
 		const response = await getCharacters(currentPage);
-		dispatch(setCharacters(response))
+		dispatch(setCharacters(response.results))
+		dispatch(setPages(response.info.pages))
 	} catch (error) {
 		if (axios.isAxiosError(error)) {
 			if (error.response?.status === 404) {
@@ -29,7 +30,8 @@ export const fetchFiltredCharacters = (currentPage: number, debouncedSearchValue
 	try {
 		dispatch(setIsLoading())
 		const response = await getFiltredCharacters(currentPage, debouncedSearchValue);
-		dispatch(setCharacters(response))
+		dispatch(setCharacters(response.results))
+		dispatch(setPages(response.info.pages))
 	} catch (error) {
 		if (axios.isAxiosError(error)) {
 			if (error.response?.status === 404) {
@@ -47,16 +49,6 @@ export const fetchFiltredCharacters = (currentPage: number, debouncedSearchValue
 
 // Sync
 
-export const setPortionCount = (portionCount: number) => ({
-	type: CharactersActionTypes.CHARACTERS_SET_PORTION_COUNT,
-	payload: portionCount,
-})
-
-export const setCurrentPage = (currentPage: number) => ({
-	type: CharactersActionTypes.CHARACTERS_SET_CURRENT_PAGE,
-	payload: currentPage,
-})
-
 export const setSearchInputValue = (searchInputValue: string) => ({
 	type: CharactersActionTypes.CHARACTERS_SET_SEARCH_INPUT_VALUE,
 	payload: searchInputValue,
@@ -66,9 +58,9 @@ const setIsLoading = () => ({
 	type: CharactersActionTypes.FETCH_CHARACTERS,
 })
 
-const setCharacters = (response: ResponseType<CharactersType>) => ({
+const setCharacters = (characters: CharactersType) => ({
 	type: CharactersActionTypes.FETCH_CHARACTERS_SUCCESS,
-	payload: response,
+	payload: characters,
 })
 
 const setError = (errorMessage: string) => ({

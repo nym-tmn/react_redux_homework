@@ -8,14 +8,9 @@ import { fetchLocatoins } from "@store";
 
 export const LocationsPage = () => {
 
-	const {
-		isLoading,
-		info,
-		results: locations,
-		currentPage,
-		portionCount,
-		error
-	} = useAppSelector(state => state.locations);
+	const { pages, currentPage, portionCount } = useAppSelector(state => state.pagination)
+
+	const { isLoading, results: locations, error } = useAppSelector(state => state.locations);
 
 	const dispatch = useAppDispatch();
 
@@ -61,7 +56,7 @@ export const LocationsPage = () => {
 						</Flex>
 					</SectionStyles>
 					<Pagination
-						pages={info.pages}
+						pages={pages}
 						dispatch={dispatch}
 						currentPage={currentPage}
 						portionCount={portionCount}

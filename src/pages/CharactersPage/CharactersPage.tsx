@@ -13,15 +13,9 @@ export const CharactersPage = () => {
 	const [isOpenModal, setIsOpenModal] = useState(false);
 	const [selectedCharacter, setSelectedCharacter] = useState<CharacterType | null>(null);
 
-	const {
-		isLoading,
-		results: characters,
-		currentPage,
-		portionCount,
-		searchInputValue,
-		info,
-		error
-	} = useAppSelector(state => state.characters);
+	const { pages, currentPage, portionCount } = useAppSelector(state => state.pagination);
+
+	const {isLoading, results: characters, searchInputValue, error } = useAppSelector(state => state.characters);
 
 	const dispatch = useAppDispatch();
 
@@ -108,7 +102,7 @@ export const CharactersPage = () => {
 						</Flex>
 					</SectionStyles>
 					<Pagination
-						pages={info.pages}
+						pages={pages}
 						dispatch={dispatch}
 						currentPage={currentPage}
 						portionCount={portionCount}

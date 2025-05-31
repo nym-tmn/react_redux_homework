@@ -1,15 +1,16 @@
 import { getLocations } from "@api";
-import type { AppThunk } from "@store";
-import { LocationsActionTypes, type LocationsType, type ResponseType } from "@types";
+import { setPages, type AppThunk } from "@store";
+import { LocationsActionTypes, type LocationsType } from "@types";
 import axios from "axios";
 
 // Async
 
 export const fetchLocatoins = (currentPage: number): AppThunk => async (dispatch) => {
 	try {
-		dispatch(setIsLoading())
+		dispatch(setIsLoading());
 		const response = await getLocations(currentPage);
-		dispatch(setLocations(response))
+		dispatch(setLocations(response.results));
+		dispatch(setPages(response.info.pages));
 	} catch (error) {
 		if (axios.isAxiosError(error)) {
 			if (error.response?.status === 404) {
@@ -31,9 +32,9 @@ const setIsLoading = () => ({
 	type: LocationsActionTypes.FETCH_LOCATIONS,
 })
 
-const setLocations = (response: ResponseType<LocationsType>) => ({
+const setLocations = (locations: LocationsType) => ({
 	type: LocationsActionTypes.FETCH_LOCATIONS_SUCCESS,
-	payload: response,
+	payload: locations,
 })
 
 const setError = (errorMessage: string) => ({
