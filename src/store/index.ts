@@ -1,6 +1,7 @@
 export { charactersReducer } from "./reducers/characterReducer";
 export { locationsReducer } from "./reducers/locationsReducer";
 export { paginationReducer } from "./reducers/paginationReducer";
+export { episodesReducer } from "./reducers/episodesReducer";
 export { rootReducer } from "./reducers/rootReducer";
 
 export {
@@ -22,7 +23,17 @@ export {
 } from './actions/locations';
 
 export {
+	fetchEpisodes
+} from './actions/episodes';
+
+export {
 	setPages,
 	setCurrentPage,
 	setPortionCount,
 } from './actions/pagination';
+
+export {
+	setIsLoading,
+	setResourse,
+	setError,
+} from './actions/common';

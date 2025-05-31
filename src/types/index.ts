@@ -16,6 +16,12 @@ export {
 } from './store/locationsReducerTypes';
 
 export {
+	EpisodesActionTypes,
+	type EpisodesState,
+	type EpisodesActions
+} from './store/episodesReducerTypes';
+
+export {
 	PaginationActionTypes,
 	type PaginationState,
 	type PaginationActions
