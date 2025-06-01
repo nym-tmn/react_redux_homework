@@ -1,20 +1,18 @@
-import { useEffect, useMemo/* , useState */ } from "react";
+import { useEffect, useMemo } from "react";
 import { Button, Flex } from "@components"
-import type { PaginationProps } from "@types";
+import { type PaginationProps } from "@types";
 import React from "react";
+import { setCurrentPage, setPortionCount } from "@store";
 
 export const Pagination: React.FC<PaginationProps> = React.memo(({
 	pages,
+	dispatch,
 	currentPage,
-	setCurrentPage,
 	portionCount,
-	setPortionCount
 }) => {
 
-	// const [portionCount, setPortionCount] = useState(1);
-
 	const { pagesCount, totalPortion, prevPagesPortion, nextPagesPortion } = useMemo(() => {
-		const pagesCount: number[] = [];
+		const pagesCount: Array<number> = [];
 		if (pages) {
 			for (let i = 1; i <= pages; i++) {
 				pagesCount.push(i);
@@ -31,9 +29,9 @@ export const Pagination: React.FC<PaginationProps> = React.memo(({
 
 	useEffect(() => {
 		if (currentPage === 1) {
-			setPortionCount(1);
+			dispatch(setPortionCount(1))
 		}
-	}, [currentPage, setPortionCount])
+	}, [currentPage, dispatch])
 
 	return (
 		<Flex as={'nav'} $margin="0 0 18px 0" $gap="5px">
@@ -44,19 +42,18 @@ export const Pagination: React.FC<PaginationProps> = React.memo(({
 							<Button
 								$maxWidth="40px"
 								prefix="<<"
-								onClick={() => setPortionCount(1)}></Button>
+								onClick={() => dispatch(setPortionCount(1))}></Button>
 							<Button
 								$maxWidth="40px"
 								prefix="<"
-								onClick={() =>
-									setPortionCount(prevPortionCount => prevPortionCount - 1)}></Button>
+								onClick={() => dispatch(setPortionCount(portionCount - 1))}></Button>
 						</>}
 					<>
 						{pagesCount.filter(page => prevPagesPortion <= page && page <= nextPagesPortion)
 							.map(page => <Button
 								key={page}
 								$isActive={currentPage === page}
-								onClick={() => setCurrentPage(page)}
+								onClick={() => dispatch(setCurrentPage(page))}
 								$maxWidth="40px"
 							>
 								{page}
@@ -67,11 +64,11 @@ export const Pagination: React.FC<PaginationProps> = React.memo(({
 							<Button
 								$maxWidth="40px"
 								prefix=">"
-								onClick={() => setPortionCount(prevPortionCount => prevPortionCount + 1)}></Button>
+								onClick={() => dispatch(setPortionCount(portionCount + 1))}></Button>
 							<Button
 								$maxWidth="40px"
 								prefix=">>"
-								onClick={() => setPortionCount(totalPortion)}></Button>
+								onClick={() => dispatch(setPortionCount(totalPortion))}></Button>
 						</>}
 				</>}
 		</Flex>

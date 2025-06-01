@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import failedImage from '@assets/images/failedImage.webp'
+import failedImage from '@assets/images/failed_Image.webp'
 import { ContentTitle, CustomImage, Flex } from "@components"
 
 const EmptyPageContainer = ({ className }: { className?: string }) => {

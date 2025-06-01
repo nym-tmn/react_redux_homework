@@ -1,10 +1,19 @@
-// import { characterReducer } from "@store";
-import { applyMiddleware, combineReducers, createStore } from "redux";
+import { applyMiddleware, legacy_createStore as createStore, type AnyAction } from "redux";
+import type { ThunkAction } from "redux-thunk";
 import { thunk } from "redux-thunk";
-// import { charactersReducer } from "./reducers/characterReducer";
+import { rootReducer } from "@store";
 
-const rootReducer = combineReducers({
-	// characters: characterReducer,
-})
+export const store = createStore(rootReducer, undefined, applyMiddleware(thunk));
 
-export const store = createStore(rootReducer, applyMiddleware(thunk))
+export type AppStore = typeof store
+
+export type AppDispatch = AppStore['dispatch']
+
+export type RootState = ReturnType<typeof rootReducer>
+
+export type AppThunk<ReturnType = void> = ThunkAction<
+	ReturnType,
+	RootState,
+	undefined,
+	AnyAction
+>;
